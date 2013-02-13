@@ -1,16 +1,16 @@
 require 'chefspec'
 
-def runner
-  # This is loads both the current cookbook and all of the cookbooks in the cookbooks/ dir which contains the windows cookbook
-  cookbook_paths = %W(#{File.expand_path("..", Dir.pwd)} #{File.expand_path(Dir.pwd)}/cookbooks)
-
-  ChefSpec::ChefRunner.new(cookbook_path: cookbook_paths, platform: 'ubuntu', version: '10.04')
-end
-
 describe 'windows_cookbook_warnings::default' do
-  let(:chef_run) { runner.converge 'windows_cookbook_warnings::default' }
+  let(:chef_run) do
+    # This loads both the current cookbook and all of the cookbooks in the cookbooks/ dir which contains the windows cookbook
+    this_cookbook = File.expand_path("..", Dir.pwd)
+    windows_cookbook = "#{File.expand_path(Dir.pwd)}/cookbooks"
+    cookbook_paths = [this_cookbook, windows_cookbook]
 
-  it "includes the default java recipe" do
+    ChefSpec::ChefRunner.new(cookbook_path: cookbook_paths, platform: 'ubuntu', version: '10.04').converge 'windows_cookbook_warnings::default'
+  end
+
+  it "includes the default windows recipe" do
     expect(chef_run).to include_recipe 'windows'
   end
 
