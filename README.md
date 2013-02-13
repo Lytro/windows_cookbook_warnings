@@ -2,7 +2,7 @@
 
 ## What happens:
 1. runner.converge is called before the first test and everything is fine.
-2. runner.converge is called before the second test and a shit-ton of warnings are spit out by Ruby.
+2. runner.converge is called before the second test and a shit-ton of warnings are spit out by Ruby because constants are being redefined.
 
 ## Steps to reproduce the warnings:
 ```bash
@@ -66,12 +66,5 @@ gems_root/chef-11.4.0/lib/chef/resource/lwrp_base.rb:51: warning: already initia
 .
 
 Finished in 0.07493 seconds
-2 examples, 0 failures
-$ RUBYOPT=W0 bundle exec rspec
-Compiling Cookbooks...
-.Compiling Cookbooks...
-.
-
-Finished in 0.07252 seconds
 2 examples, 0 failures
 ```
