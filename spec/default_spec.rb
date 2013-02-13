@@ -1,9 +1,13 @@
 require 'spec_helper'
 
-describe 'chef_cookbook_template::default' do
-  let(:chef_run) { runner.converge 'chef_cookbook_template::default' }
+describe 'windows_cookbook_warnings::default' do
+  let(:chef_run) { runner.converge 'windows_cookbook_warnings::default' }
 
-  it "does something" do
-    pending "I pity the fool who doesn't write specs!"
+  it "includes the default java recipe" do
+    expect(chef_run).to include_recipe 'windows'
+  end
+
+  it "needs a second spec so that it reloads constants" do
+    expect(chef_run).to include_recipe 'windows'
   end
 end

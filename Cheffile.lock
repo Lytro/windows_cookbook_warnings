@@ -1,2 +1,10 @@
+SITE
+  remote: http://community.opscode.com/api/v1
+  specs:
+    chef_handler (1.1.4)
+    windows (1.8.4)
+      chef_handler (>= 0.0.0)
+
 DEPENDENCIES
+  windows (>= 0)
 

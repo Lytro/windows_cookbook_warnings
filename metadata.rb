@@ -1,6 +1,8 @@
 maintainer       "YOUR_COMPANY_NAME"
 maintainer_email "YOUR_EMAIL"
 license          "All rights reserved"
-description      "Installs/Configures chef_cookbook_template"
+description      "Installs/Configures windows_cookbook_warnings"
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          "0.1.0"
+
+depends 'windows'
